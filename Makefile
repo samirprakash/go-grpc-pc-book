@@ -4,5 +4,9 @@ gen:
 clean:
 	rm pb/*.go
 
-local:
+test:
+	go test -cover -race ./...
+	
+run:
 	go run main.go
+
