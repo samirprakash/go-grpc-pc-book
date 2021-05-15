@@ -14,14 +14,12 @@ import (
 
 // LaptopServer is the server that provides laptop services
 type LaptopServer struct {
-	Store LaptopStore
+	laptopStore LaptopStore
 }
 
 // NewLaptopServer returns a new laptop server
-func NewLaptopServer(store LaptopStore) *LaptopServer {
-	return &LaptopServer{
-		Store: store,
-	}
+func NewLaptopServer(laptopStore LaptopStore) *LaptopServer {
+	return &LaptopServer{laptopStore: laptopStore}
 }
 
 func (server *LaptopServer) CreateLaptop(
@@ -47,7 +45,7 @@ func (server *LaptopServer) CreateLaptop(
 	}
 
 	// save the laptop to in memory store
-	err := server.Store.Save(laptop)
+	err := server.laptopStore.Save(laptop)
 
 	// check if error is because of an existing laptop in the meory store
 	// or due to an internal server error
