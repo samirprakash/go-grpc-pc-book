@@ -10,7 +10,7 @@ import (
 )
 
 // ErrAlreadyExistsis returned when a record with the provided ID already exists in the store
-var ErrAlreadyExists = errors.New("Laptop Id already exists in the store")
+var ErrAlreadyExists = errors.New("laptop id already exists in the store")
 
 // LaptopStore is an interface to store laptop
 type LaptopStore interface {
