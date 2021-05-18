@@ -7,13 +7,13 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/samirprakash/go-grpc-pc-book/pb"
-	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
 // LaptopServer is the server that provides laptop services
 type LaptopServer struct {
+	pb.UnimplementedLaptopServiceServer
 	laptopStore LaptopStore
 }
 
@@ -25,7 +25,6 @@ func NewLaptopServer(laptopStore LaptopStore) *LaptopServer {
 func (server *LaptopServer) CreateLaptop(
 	ctx context.Context,
 	req *pb.CreateLaptopRequest,
-	opts ...grpc.CallOption,
 ) (*pb.CreateLaptopResponse, error) {
 	laptop := req.GetLaptop()
 	log.Printf("received a create laptop request with id : %s", laptop.Id)
